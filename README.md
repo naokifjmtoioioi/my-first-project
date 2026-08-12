@@ -15,6 +15,7 @@
 - [`docs/02-domain-selection.md`](docs/02-domain-selection.md) — 事業ドメイン選定フレームワーク（確定済み）
 - [`docs/03-kpi-tracking.md`](docs/03-kpi-tracking.md) — 収益進捗トラッキングの使い方
 - [`docs/04-business-model.md`](docs/04-business-model.md) — 事業モデル・商品ライン・フェーズ計画・倫理ガードレール
+- [`docs/05-x-content-strategy.md`](docs/05-x-content-strategy.md) — フェーズ1: X発信戦略（ペルソナ・コンテンツピラー・導線）
 
 ## 進捗確認
 
@@ -30,5 +31,6 @@ python3 scripts/progress.py
 - [x] AIエージェントチーム体制の設計
 - [x] 進捗トラッキングの仕組み構築
 - [x] 事業ドメインの確定（潜在意識×コーチング／不登校の保護者向け）
-- [ ] フェーズ1（検証期）の実施：発信基盤構築、モニター実施
+- [x] 主軸発信チャネルの決定（X）とフェーズ1計画の策定
+- [ ] フェーズ1（検証期）の実施：Xアカウント設計・投稿開始、モニター実施
 - [ ] 最初の収益化施策の実行
