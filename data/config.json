@@ -1,6 +1,8 @@
 {
   "target_revenue_jpy": 50000000,
+  "realistic_target_revenue_jpy": 12000000,
   "start_date": "2026-08-01",
   "end_date": "2027-07-31",
-  "currency": "JPY"
+  "currency": "JPY",
+  "domain": "潜在意識×コーチング（不登校の子を持つ保護者向け）"
 }

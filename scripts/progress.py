@@ -69,6 +69,8 @@ def main() -> int:
 
     config = load_config(args.config)
     target = config["target_revenue_jpy"]
+    realistic_target = config.get("realistic_target_revenue_jpy")
+    domain = config.get("domain")
     start = datetime.strptime(config["start_date"], "%Y-%m-%d").date()
     end = datetime.strptime(config["end_date"], "%Y-%m-%d").date()
     today = date.today()
@@ -94,17 +96,26 @@ def main() -> int:
     print("=" * 56)
     print(" 年間収益目標 進捗レポート")
     print("=" * 56)
+    if domain:
+        print(f"事業ドメイン: {domain}")
     print(f"期間        : {start} 〜 {end}")
     print(f"基準日      : {today}")
-    print(f"目標額      : {fmt_yen(target)}")
+    print(f"目標額(北極星): {fmt_yen(target)}")
+    if realistic_target:
+        print(f"目標額(現実ライン): {fmt_yen(realistic_target)}")
     print(f"累計実績    : {fmt_yen(total)}")
-    print(f"達成率      : {progress_ratio * 100:.1f}%")
-    print(f"時間経過率  : {time_ratio * 100:.1f}%（この時点での基準線: {fmt_yen(target * time_ratio)}）")
+    print(f"達成率(北極星比): {progress_ratio * 100:.1f}%")
+    if realistic_target:
+        realistic_ratio = total / realistic_target if realistic_target else 0
+        print(f"達成率(現実ライン比): {realistic_ratio * 100:.1f}%")
+    print(f"時間経過率  : {time_ratio * 100:.1f}%（北極星の基準線: {fmt_yen(target * time_ratio)}）")
 
-    if progress_ratio + 1e-9 >= time_ratio:
-        print("判定        : 基準線を上回っています（順調）")
+    judge_target = realistic_target if realistic_target else target
+    judge_ratio = total / judge_target if judge_target else 0
+    if judge_ratio + 1e-9 >= time_ratio:
+        print("判定        : 現実ラインの基準線を上回っています（順調）")
     else:
-        print("判定        : 基準線を下回っています（要テコ入れ）")
+        print("判定        : 現実ラインの基準線を下回っています（要テコ入れ）")
 
     print("-" * 56)
     print(f"残り日数    : {remaining_days}日")
